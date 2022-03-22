@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Web</title>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .loader:empty {
+        position: absolute;
+        top: calc(50% - 4em);
+        left: calc(50% - 4em);
+        width: 6em;
+        height: 6em;
+        border: 1.1em solid rgba(0, 0, 0, 0.2);
+        border-left: 1.1em solid #000000;
+        border-radius: 50%;
+        animation: load8 1.1s infinite linear;
+    }
+
+    @keyframes load8 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    </style>
+  </head>
+<body>
+    <div id="root" class="root loader"></div>
+    
+    <script type="text/javascript">
+        function initRenderer(){
+            let {protocol, hostname, port, destination} = {};
+            if (!protocol) {
+                protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+            }
+            if (!hostname) {
+                hostname = window.location.hostname;
+            }
+            if (!port) {
+                port = window.location.port;
+            }
+            window.renderer = new Renderer({
+                protocol,
+                hostname,
+                port,
+                destination,
+                useRouter: true,
+            });
+        }
+      </script>
+      <script
+          type="text/javascript"
+          src="/main.bundle.js"
+          onload="initRenderer()"
+      >
+      </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "goblin-desktop-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Goblin Desktop Web",
   "main": "./lib/builder.js",
   "scripts": {
